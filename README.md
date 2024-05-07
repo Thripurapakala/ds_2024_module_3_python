@@ -6,8 +6,7 @@
     Python script shall analyze the records to calculate:
       Total number of months included in the dataset.
       Net total amount of "Profit/Losses" over the entire period.
-      Changes in "Profit/Losses" over the entire period, and then the average of those                          changes.
-      Greatest increase in profits (date and amount) over the entire period.
+      Changes in "Profit/Losses" over the entire period, and then the average of those changes.          Greatest increase in profits (date and amount) over the entire period.
       Greatest decrease in profits (date and amount) over the entire period.
 ### Analyzing the vote-counting process
     The dataset composed of three columns "Voter ID", "Country", "Candidate".
