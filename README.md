@@ -1,6 +1,5 @@
 # ds_2024_module_3_python1
 ## Python script to analyze the Financial records.
-## Python script to analyze the vote-counting process
 ### Analyzing the Financial records.
     The dataset composed of two columns "date" and "Profit/Losses".
     Python script shall analyze the records to calculate:
@@ -8,6 +7,7 @@
       Net total amount of "Profit/Losses" over the entire period.
       Changes in "Profit/Losses" over the entire period, and then the average of those changes.          Greatest increase in profits (date and amount) over the entire period.
       Greatest decrease in profits (date and amount) over the entire period.
+## Python script to analyze the vote-counting process
 ### Analyzing the vote-counting process
     The dataset composed of three columns "Voter ID", "Country", "Candidate".
     Python script sahll analyze the votes to calculate:
