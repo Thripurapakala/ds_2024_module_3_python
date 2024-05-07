@@ -2,5 +2,5 @@
 ## Python script to analyze the Financial records.
 ## Python script to analyze the vote-counting process
 ### Analyzing the Financial records.
--The dataset is composed of two columns "date" and "Profit/Losses".
--
+    The dataset is composed of two columns "date" and "Profit/Losses".
+    
