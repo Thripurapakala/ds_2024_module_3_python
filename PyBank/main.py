@@ -10,7 +10,7 @@ with open(budget_csv, 'r') as csvfile:
     # Split the data on commas.
     csvreader = csv.reader(csvfile, delimiter=',')
     #Took the help of Class Practice workouts and prof class exercises.
-    #Took help from Stackoverflow and Kaggle.
+    #Took help from Stackoverflow and Kaggle, Christopher Madden(TA) help as well.
     #declaring all the needed variables.
     header = next(csvreader)
     totalMonths=0
@@ -60,10 +60,9 @@ with open(budget_csv, 'r') as csvfile:
 
     #Finding the profit loss change rate.
     profitLossChangeRate = profitLossChangeTotals / (totalMonths - 1)   
-    
-    fileWrite = open("PyBank/Analysis/file.txt", "w")
 
-    #printing the financial ananlysis as requested.
+    #printing the financial ananlysis as requested in to the text file
+    fileWrite = open("PyBank/Analysis/file.txt", "w")
     print("------------------------------", file = fileWrite)
     print("Financial Analysis", file = fileWrite)
     print("------------------------------", file = fileWrite)    
@@ -72,9 +71,10 @@ with open(budget_csv, 'r') as csvfile:
     print(f"Average Change: ${round(profitLossChangeRate,2)}", file = fileWrite)
     print(f"Greatest Increase in Profits: {profitLossMaxDate} (${profitLossMax})", file = fileWrite)
     print(f"Greatest Decrease in Profits: {profitLossMinDate} (${profitLossMin})", file = fileWrite)
-
+    print("------------------------------", file = fileWrite)
     fileWrite.close()
 
+    #printing the financial ananlysis as requested.
     print("------------------------------") 
     print("Financial Analysis")
     print("------------------------------")    
@@ -83,6 +83,7 @@ with open(budget_csv, 'r') as csvfile:
     print(f"Average Change: ${round(profitLossChangeRate,2)}")
     print(f"Greatest Increase in Profits: {profitLossMaxDate} (${profitLossMax})")
     print(f"Greatest Decrease in Profits: {profitLossMinDate} (${profitLossMin})")
+    print("------------------------------")
 
 
     

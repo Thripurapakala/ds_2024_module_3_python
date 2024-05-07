@@ -2,66 +2,82 @@ import csv
 
 # Set path for file
 csvpath = "PyPoll\Resources\election_data.csv"
-
+#Took the help of Class Practice workouts and prof class exercises.
+#Took help from Stackoverflow and Kaggle and Christopher Madden(TA) help.
 # Open the CSV using the UTF-8 encoding
 with open(csvpath,encoding='UTF-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     #Total number of votes cast
     total_votes=0
-    #To find each candidate votes declared votes1 for cnadidate1 and respectively
-    votes1 = 0
-    votes2 = 0 
-    votes3 = 0
-    #declared variables for candidates 
-    candidate1="Charles Casper Stockham"
-    candidate2="Diana DeGette"
-    candidate3="Raymon Anthony Doane"
+    #List of candidatelist and candidatevotes
+   
+    candidatesList = []
+    candidatevotes = []
+  
     
     # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
-    #loopint through the csv file to count the total votes for each candidate
-    for row in csvreader:
+    #print(f"CSV.Header: {csv_header}") not required for the display of the execution
+    #looping through the csv file to count the total votes for each candidate
+            
+    for onerowdata in csvreader:
         total_votes= total_votes + 1
-        if row[2] == candidate1:
-            votes1 = votes1 + 1
-        if row[2] == candidate2:
-            votes2 =votes2 + 1
-        if row[2] == candidate3:
-            votes3 =votes3 + 1
-    #Finding the pernets for each candidate
-    percent_votes1= votes1 /total_votes *100
-    percent_votes2= votes2 /total_votes *100
-    percent_votes3= votes3 /total_votes *100
-
-    fileWrite = open("PyPoll/Analysis/file.txt", "w")
+        if onerowdata[2] not in candidatesList:
+            candidatesList.append(onerowdata[2])
+            candidatevotes.append(1)
+        else:
+            candidateindex = candidatesList.index(onerowdata[2])
+            candidatevotes[candidateindex] = candidatevotes[candidateindex] + 1
+               
+    #Finding the candidate percents
+    candidatePercentvotes = [num * 100 / total_votes for num in candidatevotes ] 
+    winner=candidatesList[candidatevotes.index(max(candidatevotes))]
 
     #printing the financial ananlysis as requested in to the text file
+    fileWrite = open("PyPoll/Analysis/file.txt", "w")
+    i=0
     print("--------------------------------", file = fileWrite)
     print("Election Results", file = fileWrite)
     print("--------------------------------", file = fileWrite)
     print(f"Total Votes: {total_votes}", file = fileWrite)
     print("--------------------------------", file = fileWrite)
-    print(f"{candidate1}: {round(percent_votes1,3)}% ({votes1})", file = fileWrite)
-    print(f"{candidate2}: {round(percent_votes2,3)}% ({votes2})", file = fileWrite)
-    print(f"{candidate3}: {round(percent_votes3,3)}% ({votes3})", file = fileWrite)
+    for num in candidatePercentvotes:
+        print(f"{candidatesList[i]}: {round(candidatePercentvotes[i],3)}% ({candidatevotes[i]})", file = fileWrite)  
+        i = i+1
     print("--------------------------------", file = fileWrite)
-    print(f"Winner: {candidate2}", file = fileWrite)
+    print(f"Winner: {winner}", file = fileWrite)
     print("--------------------------------", file = fileWrite)
-
     fileWrite.close()
 
-    #priting the results as requested.
+
+    
+    #priting the results as required.
+    i = 0
     print("--------------------------------")
     print("Election Results")
     print("--------------------------------")
     print(f"Total Votes: {total_votes}")
     print("--------------------------------")
-    print(f"{candidate1}: {round(percent_votes1,3)}% ({votes1})")
-    print(f"{candidate2}: {round(percent_votes2,3)}% ({votes2})")
-    print(f"{candidate3}: {round(percent_votes3,3)}% ({votes3})")
+    for num in candidatePercentvotes:
+        print(f"{candidatesList[i]}: {round(candidatePercentvotes[i],3)}% ({candidatevotes[i]})")  
+        i = i+1
     print("--------------------------------")
-    print(f"Winner: {candidate2}")
+    print(f"Winner: {winner}")
     print("--------------------------------")
+
+
+
+    
+
+
+
+    
+  
+ 
+
+   
+
+   
     
    
    
